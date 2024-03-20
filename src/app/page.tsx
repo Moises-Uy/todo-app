@@ -15,6 +15,14 @@ async function deleteTodo(id: string) {
 export default async function Home() {
   const todos = await prisma.todo.findMany();
 
+  if (todos.length === 0) {
+    return (
+      <div className="flex justify-center items-center">
+        <p className="text-center">Create a new task!</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <ul>
